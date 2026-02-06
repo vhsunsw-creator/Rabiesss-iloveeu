@@ -1,0 +1,63 @@
+.envelope {
+  width: 80px;
+  height: 50px;
+  background: #fff;
+  border: 2px solid #ff4d6d;
+  border-radius: 6px;
+  position: absolute;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  perspective: 600px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+/* Top flap */
+.envelope::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 25px solid #ff4d6d;
+  top: -2px;
+  left: 0;
+  transform-origin: top;
+  transition: transform 0.6s ease;
+}
+
+/* Open flap effect */
+.envelope.open::before {
+  transform: rotateX(180deg);
+}
+
+/* Hover effect */
+.envelope:hover {
+  transform: rotateY(15deg) rotateX(10deg) scale(1.2);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* Letter inside envelope */
+.envelope span {
+  font-size: 25px;
+  position: relative;
+  z-index: 2;
+  color: #ff4d6d;
+}
+
+/* Letter styling */
+.letter {
+  background: rgba(255,245,247,0.95);
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 15px;
+  opacity: 0;
+  animation: slide 0.6s forwards;
+  position: relative;
+  z-index: 2;
+}
